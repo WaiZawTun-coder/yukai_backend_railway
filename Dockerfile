@@ -10,7 +10,8 @@ RUN a2enmod mpm_prefork
 # Install PHP extensions
 RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
- && docker-php-ext-install curl pdo_mysql mysqli
+ && docker-php-ext-install curl pdo_mysql mysqli \
+ && rm -rf /var/lib/apt/lists/*
 
 # Copy project
 COPY . /var/www/html/
